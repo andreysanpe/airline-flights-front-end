@@ -10,8 +10,13 @@ export class FlightService {
   obtainFlights():Observable<any>{
     return this.httpClient.get("http://localhost:8080/v1/airline/flight");
   }
+  
   obtainFlightsByClient(id: string):Observable<any>{
     return this.httpClient.get("http://localhost:8080/v1/airline/client-flights/" + id);
+  }
+
+  bookFlight(data):Observable<any> {
+    return this.httpClient.post("http://localhost:8080/v1/airline/client-reserve/", data);
   }
 
   getFlights(): Observable<any> {

@@ -4,20 +4,20 @@ import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ClientFlightsComponent } from './client-flights/client-flights.component';
 import { FlightsComponent } from './flights/flights.component';
 import {FlightService} from './servicio/flight.service';
 import {HttpClientModule} from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ErrorComponent } from './shared/error/error.component';
+import { ReservationFormComponent } from './reservation-form/reservation-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ClientFlightsComponent,
     FlightsComponent,
-    ErrorComponent
+    ErrorComponent,
+    ReservationFormComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +27,7 @@ import { ErrorComponent } from './shared/error/error.component';
     NgbModule
   ],
   providers: [FlightService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent, ReservationFormComponent]
 })
 export class AppModule { }

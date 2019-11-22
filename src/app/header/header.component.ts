@@ -12,12 +12,13 @@ export class HeaderComponent implements OnInit {
   constructor(private flightService: FlightService, private modalService: ModalService) { }
 
   ngOnInit() {
+    this.obtainAllFlights();
   }
 
-  obtainAllFlights(event) {
-    event.preventDefault();
+  obtainAllFlights(event?) {
+    if(event ){event.preventDefault();}
     this.flightService.obtainFlights().subscribe(resultado => {
-      this.flightService.setFlights(resultado);
+        this.flightService.setFlights(resultado);
     },
       err => {
         alert(err.error.message);
@@ -29,8 +30,8 @@ export class HeaderComponent implements OnInit {
       this.flightService.setFlights(resultado);
     },
       err => {
-       // alert(err.error.message);
-       this.modalService.openModalError();
+       this.modalService.openModalError(err.error.message,'Error en la consulta');
+       this.flightService.setFlights(null);
       }
     );
   }

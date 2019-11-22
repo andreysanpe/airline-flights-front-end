@@ -1,3 +1,4 @@
+import { ModalService } from './../servicio/modal.service';
 import { Component, OnInit } from '@angular/core';
 import {FlightService} from '../servicio/flight.service';
 
@@ -8,12 +9,12 @@ import {FlightService} from '../servicio/flight.service';
 })
 export class FlightsComponent implements OnInit {
 
-  constructor(private flightService:FlightService) {
+  constructor(private flightService:FlightService, private modalService: ModalService) {
 
    }
   flights;
   headElements = ['','Cod Vuelo', 'Fecha','Hora', 'Origen', 'Destino','Precio'];
-  headElementsClients = ['','Cod Vuelo', 'Identificación', 'Fecha','Hora', 'Origen', 'Destino','Precio'];
+  headElementsClients = ['Cod Vuelo', 'Identificación', 'Fecha','Hora', 'Origen', 'Destino','Precio'];
   ngOnInit() {
     this.obtainFlights();
   }
@@ -23,5 +24,14 @@ export class FlightsComponent implements OnInit {
       results => this.flights = results
     );
   }
-
+  bookFlight(data) {
+    this.modalService.openReserveForm(data).then(result => {
+     if(result) {  
+       this.flightService.bookFlight(result).subscribe(
+         resultado => this.modalService.openModalError(resultado.info,'Reserva exitosa'),
+         err =>this.modalService.openModalError(err.error.message,'Error en la reserva')
+       );
+     }
+    });
+  }
 }

@@ -12,7 +12,7 @@
     </thead>
     <tbody>
         <tr mdbTableCol *ngFor="let fly of flights">
-            <th ><button type="button" class="btn btn-outline-primary">Reservar</button></th>
+            <th *ngIf="!fly.identification"><button type="button" (click)="bookFlight(fly)"class="btn btn-outline-primary">Reservar</button></th>
             <th >{{fly.id}}</th>
             <th *ngIf="fly.identification">{{fly.identification}}</th>
             <td>{{fly.date}}</td>

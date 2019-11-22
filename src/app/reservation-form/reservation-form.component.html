@@ -1,0 +1,47 @@
+<div class="booking-form">
+  <h2>Formulario de Reserva</h2>
+  <div class="form-inline">
+    <div class="form-group col-md-6 mb-10">
+      <label for="codFly">Cod Vuelo</label>
+      <input [(ngModel)]="data.id" type="text" class="form-control" id="id" disabled>
+    </div>
+    <div class="form-group col-md-6 mb-10">
+      <label for="date">Fecha</label>
+      <input [(ngModel)]="data.date" type="text" class="form-control" id="date" disabled>
+    </div>
+    <div class="form-group col-md-6 mb-10">
+      <label for="time">Hora</label>
+      <input [(ngModel)]="data.time" type="text" class="form-control" id="time" disabled>
+    </div>
+    <div class="form-group col-md-6 mb-10">
+      <label for="origin">Origen</label>
+      <input [(ngModel)]="data.origin" type="text" class="form-control" id="origin" disabled>
+    </div>
+    <div class="form-group col-md-6 mb-10">
+      <label for="destination">Destino</label>
+      <input [(ngModel)]="data.destination" type="text" class="form-control" id="destination" disabled>
+    </div>
+    <div class="form-group col-md-6 mb-10">
+      <label for="price">Precio</label>
+      <input [(ngModel)]="data.price" type="text" class="form-control" id="price" disabled>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group col-md-6 mt-10">
+          <label for="identification">Identificación*</label>
+          <input [(ngModel)]="document" type="text" class="form-control" id="identification" placeholder="Identificación..." required>
+          <span class="error col-12" *ngIf="document === ''">La identificación es obligatoria</span>
+        </div>
+        <div class="form-group col-md-6 mt-10">
+          <label for="age">Edad*</label>
+          <input [(ngModel)]="age" type="number" min="18" class="form-control" id="age" placeholder="Edad...">
+          <span class="error col-12" *ngIf="showAgeError">El cliente debe ser mayor de edad</span>
+        </div>
+      </div>
+    </div>
+    <div class="custom-btn-group col-12">
+      <button [disabled]="showAgeError ||document === ''" (click)="bookFlight()" class="btn btn-primary">Reservar</button>
+      <button (click)="cancelFlight()" class="btn btn-danger" style="margin-left: 50px">Cancelar</button>
+    </div>
+  </div>
+</div>
