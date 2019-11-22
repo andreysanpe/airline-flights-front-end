@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand nav-link" >Aerolinea TyS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="" (click)="obtainAllFlights($event)">Consultar Vuelos <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <input class="" type="text" [(ngModel)]="id" placeholder="Nro de documento">
+          <button class="nav-link" href="" (click)="obtainAllFlightsByClient($event)">Consultar vuelos de cliente</button>
+        </li>
+      </ul>
+    </div>
+  </nav>

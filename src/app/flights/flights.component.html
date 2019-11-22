@@ -1,0 +1,25 @@
+<h1 class="text-primary" style="text-align: center" *ngIf="flights && !flights[0].identification">Vuelos disponibles</h1>
+<h1 class="text-primary" style="text-align: center" *ngIf="flights && flights[0].identification">Vuelos Reservados por: {{flights[0].identification}}</h1>
+<br>
+<table class="table">
+    <thead class="thead-dark">
+      <tr *ngIf="flights && !flights[0].identification">
+          <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+      </tr>
+      <tr *ngIf="flights && flights[0].identification">
+          <th *ngFor="let head of headElementsClients" scope="col">{{head}} </th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr mdbTableCol *ngFor="let fly of flights">
+            <th ><button type="button" class="btn btn-outline-primary">Reservar</button></th>
+            <th >{{fly.id}}</th>
+            <th *ngIf="fly.identification">{{fly.identification}}</th>
+            <td>{{fly.date}}</td>
+            <td>{{fly.time}}</td>
+            <td>{{fly.origin}}</td>
+            <td>{{fly.destination}}</td>
+            <td>{{fly.price}}</td>
+          </tr>
+    </tbody>
+  </table>
